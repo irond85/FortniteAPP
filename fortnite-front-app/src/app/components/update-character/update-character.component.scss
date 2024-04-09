@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Burbank Big Condensed Black";
+}
+
+body {
+    background-image: url('../../../images/Background_Fortnite.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.form {
+    width: 600px;
+    background: #2a095f;
+    padding: 30px;
+    margin: auto;
+    margin-top: auto;
+    border-radius: 2px;
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+    font-size: 25px;
+}
+
+.form h4 {
+    font-size: 35px;
+    margin-bottom: 20px;
+    font-family: "Burbank Big Condensed Black";
+    color: #f0ed07;
+    text-align: center;
+}
+
+form button {
+    color: #000;
+    background: #f0ed07;
+    border: none;
+    padding: 8px;
+    font-size: 20px;
+}
+
+.form-text {
+    color: #69B6E0;
+    font-style: italic;
+}
+
+.form-control {
+    font-size: 20px;
+    padding: 2px;
+}
+
+.form-select {
+    font-size: 20px;
+    padding: 2px;
+}
