@@ -14,3 +14,8 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+    volumes:
+      - mongo_vol:/data/db
+volumes:
+  mongo_vol:
+    external: true
