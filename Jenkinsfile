@@ -1,23 +1,60 @@
-pipeline{
+pipeline {
     agent any
 
-    stages{
-        stage('Build'){
-            steps{
-                sh 'npm install'
-                echo '==> Nos specified build stage'
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/irond85/FortniteApp'
             }
         }
-        stage('Test'){
-            steps{
-                sh 'npm test'
-                echo '==> Nos specified test stage'
+
+        stage('Build Angular App') {
+            steps {
+                dir('fortnite-front-app') {
+                    script {
+                        sh 'npm install'
+                        sh 'npm run build'
+                    }
+                }
             }
         }
-        stage('Deploy'){
-            steps{
-                sh 'docker-compose down -v'
+
+        stage('Build Node.js API') {
+            steps {
+                dir('FortniteAPI') {
+                    script {
+                        sh 'npm install'
+                    }
+                }
             }
+        }
+
+        stage('Run Docker Compose') {
+            steps {
+                sh 'docker-compose -f docker-compose.yml up --build -d'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                dir('FortniteAPI') {
+                    script {
+                        sh 'npm test'
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Agrega aquí los comandos necesarios para implementar tu aplicación
+            }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker-compose -f docker-compose.yml down'
         }
     }
 }
