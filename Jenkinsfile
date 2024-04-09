@@ -47,7 +47,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                // Agrega aquí los comandos necesarios para implementar tu aplicación
+                echo '==> Not specified stage'
             }
         }
     }
