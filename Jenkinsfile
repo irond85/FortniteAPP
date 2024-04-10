@@ -6,8 +6,8 @@ pipeline {
             steps {
                 dir('fortnite-front-app') {
                     script {
-                        sh 'npm install'
-                        sh 'npm run build'
+                        bat 'npm install'
+                        bat 'npm run build'
                     }
                 }
             }
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 dir('FortniteAPI') {
                     script {
-                        sh 'npm install'
+                        bat 'npm install'
                     }
                 }
             }
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Run Docker Compose') {
             steps {
-                sh 'docker-compose -f docker-compose.yml up --build -d'
+                bat 'docker-compose -f docker-compose.yml up --build -d'
             }
         }
 
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 dir('FortniteAPI') {
                     script {
-                        sh 'npm test'
+                        bat 'npm test'
                     }
                 }
             }
@@ -48,7 +48,7 @@ pipeline {
 
     post {
         always {
-            sh 'docker-compose -f docker-compose.yml down'
+            bat 'docker-compose -f docker-compose.yml down'
         }
     }
 }
