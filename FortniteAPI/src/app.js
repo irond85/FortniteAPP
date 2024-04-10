@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
 import routerPersonajes from "./routes/Personajes.routes.js";
+import { DB_HOST,DB_PORT,DB_DATABASE } from "./config.js";
 
 const connection = 'mongodb://' + DB_HOST + ':' + DB_PORT + '/' + DB_DATABASE;
 mongoose.connect(connection).then();
